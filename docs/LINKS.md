@@ -1,0 +1,3 @@
+- Copycast : N/A
+- Repo : https://github.com/naholyr/formation-react-2020-11
+- Émargement : https://extranet-humancoders.dendreo.com/

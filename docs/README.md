@@ -7,6 +7,7 @@ Formateur : Nicolas Chambrier <nicolas@chambrier.fr> @naholyr
 ### Liens utiles
 
 - Diagramme du cycle de vie des composants : http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+  - Version hook : https://wavez.github.io/react-hooks-lifecycle/
 - Ulimit & watch : https://www.imakewebsites.ca/posts/2018/03/06/node.js-too-many-open-files-and-ulimit/
 - Qui est this ? https://github.com/byteclubfr/site/blob/readable-in-github/src/blog/this.md
 - Features ES6 : http://es6-features.org/#ObjectMatchingShorthandNotation

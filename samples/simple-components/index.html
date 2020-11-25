@@ -1,0 +1,55 @@
+<body>
+  <div id="app"></div>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script>
+    function App({ name }) {
+      return React.createElement(
+        React.Fragment, // Composant invisible
+        {},
+        React.createElement(
+          Title,
+          { title: 'Hello' },
+        ),
+        React.createElement(
+          Title2,
+          { title: name },
+        ),
+      );
+    }
+
+    // Composant = fonction qui retourne un élément
+    function Title({ title = "default title" }) {
+      return React.createElement(
+        'h1',                       // "h1" = composant natif de react-dom
+        {},                         // props
+        `${title} (cliqué 0 fois)`  // children
+      );
+    }
+
+    // Composant = classe dont la méthode render retourne un élément
+    class Title2 extends React.Component {
+      // initialize state ?
+
+      render() {
+        const { title } = this.props;
+
+        const onClick = (e) => {
+          e.preventDefault();
+          // increment state ?
+        };
+
+        return React.createElement(
+          'h1',                           // "h1" = composant natif de react-dom
+          { onClick },                    // props
+          `${title} (cliqué ${this.x} fois)`,     // children
+        );
+      }
+    }
+
+    const mountPoint = document.getElementById('app');
+    const element = React.createElement(App, { name: 'World' });
+
+    ReactDOM.render(element, mountPoint);
+  </script>
+</body>

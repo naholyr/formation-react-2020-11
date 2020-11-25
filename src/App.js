@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Chat from "./Chat";
+import Counter from "./Counter2";
 
-function App() {
+// []
+// [<li key=0>]
+// [1, 0]
+// [2, 1, 0]
+
+const App = () => {
+  const [counterArray, setCounterArray] = useState([]);
+
+  const onClick = (e) => {
+    e.preventDefault();
+    setCounterArray([
+      <li key={counterArray.length}>
+        <Counter />
+      </li>,
+      ...counterArray,
+    ]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={onClick}>Add counter</button>
+      <ul>{counterArray}</ul>
+      <Chat room={"room" + counterArray.length} />
     </div>
   );
-}
+};
 
 export default App;

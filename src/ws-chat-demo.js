@@ -40,14 +40,23 @@ const dateFormatter = new Intl.DateTimeFormat(undefined, {
   minute: "2-digit",
 });
 
-ws.on("message", (username, text, timestamp, room, isMyself) => {
+const showMessage = ({
+  login: username,
+  text,
+  date: timestamp,
+  room,
+  myself: isMyself,
+}) => {
   const formattedDate = dateFormatter.format(new Date(timestamp));
   if (isMyself) {
     console.log("#%s > You (%s): %s", room, username, formattedDate, text);
   } else {
     console.log("#%s > @%s (%s): %s", room, username, formattedDate, text);
   }
-});
+};
+
+ws.on("messages", (messages) => messages.forEach(showMessage));
+ws.on("message", showMessage);
 
 ws.on("connect", () => console.warn("WS: connected"));
 ws.on("disconnect", () => console.warn("WS: disconnected"));

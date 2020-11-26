@@ -1,11 +1,12 @@
-import { memo, useEffect } from "react";
+import { initialState } from "./store";
 
-const Header = memo(({ onLogout, username }) => {
-  useEffect(() => console.log("Header#update"));
+const Header = () => {
+  // TODO subscribe to store
+  const { username } = initialState;
 
   const handleClick = (e) => {
     e.preventDefault();
-    onLogout();
+    // TODO dispatch "logout"
   };
 
   return (
@@ -51,6 +52,6 @@ const Header = memo(({ onLogout, username }) => {
       )}
     </nav>
   );
-});
+};
 
 export default Header;

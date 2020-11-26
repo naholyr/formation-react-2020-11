@@ -4,26 +4,16 @@ import RoomList from "./RoomList";
 import ChatForm from "./ChatForm";
 import MessageList from "./MessageList";
 
-const PageChat = ({
-  rooms,
-  currentRoom,
-  messages,
-  onJoinRoom,
-  onChangeRoom,
-}) => {
+const PageChat = () => {
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-lg-2">
-          <RoomList
-            items={rooms}
-            currentRoom={currentRoom}
-            onChangeRoom={onChangeRoom}
-          />
+          <RoomList />
         </div>
         <div className="col-lg-10 pt-3">
-          <ChatForm currentRoom={currentRoom} onJoinRoom={onJoinRoom} />
-          <MessageList items={messages} />
+          <ChatForm />
+          <MessageList />
         </div>
       </div>
     </div>

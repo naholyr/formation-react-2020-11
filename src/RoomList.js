@@ -1,11 +1,15 @@
 // Clément
 import "./RoomList.css";
 import RoomItem from "./RoomItem";
+import { initialState } from "./store";
 
-const RoomList = ({ items, currentRoom, onChangeRoom }) => {
+const RoomList = () => {
+  // TODO subscribe to store
+  const { rooms, currentRoom } = initialState;
+
   return (
     <ul className="RoomList col-auto p-3 nav nav-pills flex-column">
-      {items.map((item) => (
+      {rooms.map((item) => (
         <li
           className="nav-item d-flex"
           key={item.label} // no duplicate label
@@ -16,7 +20,6 @@ const RoomList = ({ items, currentRoom, onChangeRoom }) => {
             closable={item.closable}
             disabled={item.disabled}
             active={item.label === currentRoom}
-            onChangeRoom={onChangeRoom}
           />
         </li>
       ))}

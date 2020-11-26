@@ -1,7 +1,7 @@
 import LoginForm from "./LoginForm";
 import RoomList from "./RoomList";
 
-const PageLogin = ({ rooms, currentRoom, messages, onSubmitLogin }) => {
+const PageLogin = () => {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -15,7 +15,7 @@ const PageLogin = ({ rooms, currentRoom, messages, onSubmitLogin }) => {
           />
         </div>
         <div className="col-lg-10 pt-3">
-          <LoginForm onSubmitLogin={onSubmitLogin} />
+          <LoginForm />
         </div>
       </div>
     </div>

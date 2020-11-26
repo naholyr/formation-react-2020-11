@@ -14,34 +14,47 @@ import cx from "classnames";
       > */
 
 const MessageItem = ({
-  time,
-  userName,
-  body,
+  timestamp,
+  formattedTime,
+  username,
+  text,
   isRead = false,
   isSystem = false,
 }) => {
+  const linkToUsername = (
+    <button
+      className={cx("btn btn-link text-left", {
+        "text-secondary pl-0": isSystem,
+        "text-truncate col-sm-2 pl-1": !isSystem,
+      })}
+    >
+      @<strong>{username}</strong>
+    </button>
+  );
+
   return (
     <div
-      className={cx(
-        "row",
-        "py-2",
-        { "text-muted": isSystem },
-        { "bg-light": !isSystem }
-      )}
+      className={cx("row py-2", {
+        "text-muted": isSystem,
+        "bg-light": !isSystem,
+      })}
     >
-      <small className="col-auto text-secondary">{time}</small>
-      <span className="col text-wrap">
-        <button
-          className={cx(
-            "btn btn-link",
-            { "text-secondary": isSystem },
-            { "text-truncate": !isSystem }
-          )}
-        >
-          @<strong>{userName}</strong>
-        </button>
-        {body}
-      </span>
+      <time
+        title={new Date(timestamp).toLocaleString()}
+        className="col-auto text-secondary align-self-center"
+      >
+        {formattedTime}
+      </time>
+      {isSystem ? (
+        <span className="col text-wrap align-self-left pl-1">
+          {linkToUsername} {text}
+        </span>
+      ) : (
+        <>
+          {linkToUsername}
+          <span className="col text-wrap align-self-center">{text}</span>
+        </>
+      )}
     </div>
   );
 };

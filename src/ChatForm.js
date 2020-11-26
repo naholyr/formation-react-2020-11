@@ -1,11 +1,20 @@
 import "./ChatForm.css";
+import { initialState } from "./store";
 
-const ChatForm = ({ currentRoom, onJoinRoom }) => {
+const ChatForm = () => {
+  // TODO subscribe to store
+  const { currentRoom } = initialState;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (e.target.elements.action.value === "join") {
-      onJoinRoom("#" + e.target.elements.message.value);
-      e.target.elements.action.value = "post";
+    switch (e.target.elements.action.value) {
+      case "join":
+        // TODO dispatch "joinRoom"
+        // TODO set select's value to "join" once selected new room
+        break;
+      default:
+        // TODO dispatch "postMessage"
+        break;
     }
     e.target.elements.message.value = "";
   };

@@ -8,17 +8,16 @@ const RoomItem = ({
   notif = 0,
   active = false,
   disabled = false,
-  onChangeRoom,
 }) => {
   const handleClick = (e) => {
     e.preventDefault();
-    onChangeRoom(label);
+    // TODO dispatch "changeRoom"
   };
 
   return (
     <>
       {closable && (
-        <button type="button" className="close pr-3" aria-label="Close">
+        <button type="button" className="close mr-3" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       )}
@@ -27,13 +26,13 @@ const RoomItem = ({
         className={cx(
           "btn",
           { disabled, "btn-link": !active, "btn-primary": active },
-          "nav-link flex-grow-1"
+          "nav-link flex-grow-1 text-right"
         )}
         onClick={handleClick}
       >
         {label}
         {notif > 0 && (
-          <span className="badge badge-primary badge-pill">{notif}</span>
+          <span className="badge badge-primary badge-pill ml-3">{notif}</span>
         )}
       </button>
     </>

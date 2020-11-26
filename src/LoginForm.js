@@ -1,8 +1,8 @@
-const LoginForm = ({ onSubmitLogin }) => {
+const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.elements.username.value);
-    onSubmitLogin(e.target.elements.username.value);
+    // TODO dispatch action "login"
+    // console.log(e.target.elements.username.value);
   };
 
   return (

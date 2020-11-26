@@ -74,7 +74,7 @@ const joinChatRoom = (room, { emit, join, login }) => {
     login
   );
   emit()("joined", room, login, true);
-  emit()("messages", getLatestMessages(room));
+  emit()("messages", room, getLatestMessages(room));
 };
 
 // -------------------------------
@@ -104,7 +104,7 @@ exports.handlers = {
   // < login(username)
   // >> welcome(username, myself?)
   // >> joined(room, username, myself?)
-  // > messages(Message[])
+  // > messages(room, Message[])
   login: ({ wss, ws, emit, args: [login], join }) => {
     if (typeof login !== "string")
       return emit()("error", "Invalid login @" + login);

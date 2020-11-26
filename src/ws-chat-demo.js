@@ -55,7 +55,7 @@ const showMessage = ({
   }
 };
 
-ws.on("messages", (messages) => messages.forEach(showMessage));
+ws.on("messages", (room, messages) => messages.forEach(showMessage));
 ws.on("message", showMessage);
 
 ws.on("connect", () => console.warn("WS: connected"));

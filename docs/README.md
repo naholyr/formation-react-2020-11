@@ -31,8 +31,8 @@ Formateur : Nicolas Chambrier <nicolas@chambrier.fr> @naholyr
 - “Hot reloading with create-react-app without ejecting” : https://medium.com/@brianhan/hot-reloading-cra-without-eject-b54af352c642
 - “Portable console emulator for Windows” : https://cmder.net/
 - “Execution in the kindom of nouns” : https://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html
-- “React Lifecycle Methods Diagram” : http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 - “Understanding Redux Middleware And Writing Custom Ones” : https://designingforscale.com/understanding-redux-middleware-and-writing-custom-ones/
+- Bootstrap & Sass : https://makina-corpus.com/blog/metier/2015/utiliser-bootstrap-avec-un-pre-processeur
 
 ## Protips / bons réflexes
 

@@ -1,0 +1,11 @@
+.MessageItem {
+  background: lightblue;
+}
+
+.MessageItemNormal {
+  background: lightblue;
+}
+
+.MessageItemSystem {
+  background: lightgray;
+}

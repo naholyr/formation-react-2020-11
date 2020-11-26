@@ -1,4 +1,13 @@
-const Header = ({ username }) => {
+import { useEffect } from "react";
+
+const Header = ({ onLogout, username }) => {
+  useEffect(() => console.log("Header#update"));
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    onLogout();
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <button className="btn btn-link navbar-brand">#Awesome</button>
@@ -27,7 +36,19 @@ const Header = ({ username }) => {
           </li>
         </ul>
       </div>
-      {username && <span className="navbar-text">{username}</span>}
+      {username && (
+        <span className="navbar-text">
+          {username}
+          <button
+            type="button"
+            className="close pr-3"
+            aria-label="Close"
+            onClick={handleClick}
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </span>
+      )}
     </nav>
   );
 };

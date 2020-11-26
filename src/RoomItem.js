@@ -1,4 +1,4 @@
-//Marwa
+//Marwa & Lucas
 import "./RoomItem.css";
 import cx from "classnames";
 
@@ -8,7 +8,13 @@ const RoomItem = ({
   notif = 0,
   active = false,
   disabled = false,
+  onChangeRoom,
 }) => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    onChangeRoom(label);
+  };
+
   return (
     <>
       {closable && (
@@ -23,6 +29,7 @@ const RoomItem = ({
           { disabled, "btn-link": !active, "btn-primary": active },
           "nav-link flex-grow-1"
         )}
+        onClick={handleClick}
       >
         {label}
         {notif > 0 && (

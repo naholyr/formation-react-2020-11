@@ -3,7 +3,27 @@ import Header from "./Header";
 import Footer from "./Footer";
 import PageChat from "./PageChat";
 import PageLogin from "./PageLogin";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
+
+/*
+class App extends Component {
+  state = { username: null };
+
+  // this statically bound (function instance member)
+  handleLogout = () => {
+    this.setState({ username: null });
+  };
+
+  // nope
+  // handleLogout() {}
+
+  render() {
+    return (
+      <Header username={this.state.username} onLogout={this.handleLogout} />
+    );
+  }
+}
+*/
 
 const data = {
   messages: [
@@ -45,23 +65,48 @@ const data = {
 };
 
 const App = ({
-  rooms = data.rooms,
+  initialRooms = data.rooms,
   messages = data.messages,
-  currentRoom = data.currentRoom,
+  initialCurrentRoom = data.currentRoom,
 }) => {
+  const [rooms, setRooms] = useState(initialRooms);
+  const [currentRoom, setCurrentRoom] = useState(initialCurrentRoom);
   const [username, setUsername] = useState(null);
 
-  const isLogin = username != null;
+  // Plutôt à réserver aux calculs coûteux
+  const isLogin = useMemo(() => {
+    console.log("compute isLogin");
+    return username !== null;
+  }, [username]);
 
   const handleSubmitLogin = (username) => {
     setUsername(username);
   };
 
+  const handleJoinRoom = (label) => {
+    setRooms([...rooms, { closable: true, label }]);
+    setCurrentRoom(label);
+  };
+
+  const handleChangeRoom = (label) => {
+    setCurrentRoom(label);
+  };
+
+  const handleLogout = () => {
+    setUsername(null);
+  };
+
   return (
     <>
-      <Header username={username} />
+      <Header username={username} onLogout={handleLogout} />
       {isLogin && (
-        <PageChat rooms={rooms} currentRoom={currentRoom} messages={messages} />
+        <PageChat
+          rooms={rooms}
+          currentRoom={currentRoom}
+          messages={messages}
+          onJoinRoom={handleJoinRoom}
+          onChangeRoom={handleChangeRoom}
+        />
       )}
       {!isLogin && <PageLogin onSubmitLogin={handleSubmitLogin} />}
       <Footer />

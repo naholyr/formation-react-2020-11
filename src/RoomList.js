@@ -2,7 +2,7 @@
 import "./RoomList.css";
 import RoomItem from "./RoomItem";
 
-const RoomList = ({ items, currentRoom }) => {
+const RoomList = ({ items, currentRoom, onChangeRoom }) => {
   return (
     <ul className="RoomList col-auto p-3 nav nav-pills flex-column">
       {items.map((item) => (
@@ -16,6 +16,7 @@ const RoomList = ({ items, currentRoom }) => {
             closable={item.closable}
             disabled={item.disabled}
             active={item.label === currentRoom}
+            onChangeRoom={onChangeRoom}
           />
         </li>
       ))}

@@ -1,6 +1,7 @@
 //Marwa & Lucas
 import "./RoomItem.css";
 import cx from "classnames";
+import { useLogLifecycle } from "./use-log-lifecycle";
 
 const RoomItem = ({
   label,
@@ -9,6 +10,8 @@ const RoomItem = ({
   active = false,
   disabled = false,
 }) => {
+  useLogLifecycle("RoomItem");
+
   const handleClick = (e) => {
     e.preventDefault();
     // TODO dispatch "changeRoom"

@@ -3,8 +3,11 @@ import "./Pagechat.css";
 import RoomList from "./RoomList";
 import ChatForm from "./ChatForm";
 import MessageList from "./MessageList";
+import { useLogLifecycle } from "./use-log-lifecycle";
 
 const PageChat = () => {
+  useLogLifecycle("PageChat");
+
   return (
     <div className="container-fluid">
       <div className="row">

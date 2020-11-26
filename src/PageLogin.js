@@ -1,7 +1,10 @@
 import LoginForm from "./LoginForm";
 import RoomList from "./RoomList";
+import { useLogLifecycle } from "./use-log-lifecycle";
 
 const PageLogin = () => {
+  useLogLifecycle("PageLogin");
+
   return (
     <div className="container-fluid">
       <div className="row">

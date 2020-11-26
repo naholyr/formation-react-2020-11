@@ -1,5 +1,6 @@
 import "./MessageItem.css";
 import cx from "classnames";
+import { useLogLifecycle } from "./use-log-lifecycle";
 
 /* <div class="row bg-light py-2">
             <small class="col-auto text-secondary">22:41</small>
@@ -21,6 +22,8 @@ const MessageItem = ({
   isRead = false,
   isSystem = false,
 }) => {
+  useLogLifecycle("MessageItem");
+
   const linkToUsername = (
     <button
       className={cx("btn btn-link text-left", {

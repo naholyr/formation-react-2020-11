@@ -1,4 +1,6 @@
 const LoginForm = () => {
+  useLogLifecycle("LoginForm");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO dispatch action "login"

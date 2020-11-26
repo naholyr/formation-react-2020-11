@@ -1,7 +1,10 @@
 import "./ChatForm.css";
 import { initialState } from "./store";
+import { useLogLifecycle } from "./use-log-lifecycle";
 
 const ChatForm = () => {
+  useLogLifecycle("ChatForm");
+
   // TODO subscribe to store
   const { currentRoom } = initialState;
 

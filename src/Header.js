@@ -1,6 +1,9 @@
 import { initialState } from "./store";
+import { useLogLifecycle } from "./use-log-lifecycle";
 
 const Header = () => {
+  useLogLifecycle("Header");
+
   // TODO subscribe to store
   const { username } = initialState;
 

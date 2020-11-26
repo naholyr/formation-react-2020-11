@@ -2,8 +2,11 @@
 import "./RoomList.css";
 import RoomItem from "./RoomItem";
 import { initialState } from "./store";
+import { useLogLifecycle } from "./use-log-lifecycle";
 
 const RoomList = () => {
+  useLogLifecycle("RoomList");
+
   // TODO subscribe to store
   const { rooms, currentRoom } = initialState;
 

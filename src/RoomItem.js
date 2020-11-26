@@ -2,7 +2,13 @@
 import "./RoomItem.css";
 import cx from "classnames";
 
-const RoomItem = ({ label, closable = false, notif = 0, active = false }) => {
+const RoomItem = ({
+  label,
+  closable = false,
+  notif = 0,
+  active = false,
+  disabled = false,
+}) => {
   return (
     <>
       {closable && (
@@ -14,7 +20,7 @@ const RoomItem = ({ label, closable = false, notif = 0, active = false }) => {
       <button
         className={cx(
           "btn",
-          { "btn-link": !active, "btn-primary": active },
+          { disabled, "btn-link": !active, "btn-primary": active },
           "nav-link flex-grow-1"
         )}
       >

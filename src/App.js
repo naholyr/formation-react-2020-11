@@ -3,11 +3,12 @@ import Header from "./Header";
 import Footer from "./Footer";
 import PageChat from "./PageChat";
 import PageLogin from "./PageLogin";
+import { useEffect, useState } from "react";
 
 const data = {
   messages: [
     {
-      date: "22:44",
+      date: "22:45",
       username: "Username",
       text: "a quitté #general",
       isSystem: true,
@@ -44,12 +45,17 @@ const data = {
 };
 
 const App = ({
-  username = data.username,
   rooms = data.rooms,
   messages = data.messages,
   currentRoom = data.currentRoom,
 }) => {
+  const [username, setUsername] = useState(null);
+
   const isLogin = username != null;
+
+  const handleSubmitLogin = (username) => {
+    setUsername(username);
+  };
 
   return (
     <>
@@ -57,7 +63,7 @@ const App = ({
       {isLogin && (
         <PageChat rooms={rooms} currentRoom={currentRoom} messages={messages} />
       )}
-      {!isLogin && <PageLogin />}
+      {!isLogin && <PageLogin onSubmitLogin={handleSubmitLogin} />}
       <Footer />
     </>
   );

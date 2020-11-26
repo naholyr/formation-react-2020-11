@@ -14,6 +14,7 @@ const RoomList = ({ items, currentRoom }) => {
             label={item.label}
             notif={item.notif}
             closable={item.closable}
+            disabled={item.disabled}
             active={item.label === currentRoom}
           />
         </li>

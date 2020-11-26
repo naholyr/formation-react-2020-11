@@ -14,7 +14,6 @@ import cx from "classnames";
       > */
 
 const MessageItem = ({
-  key,
   time,
   userName,
   body,
@@ -23,7 +22,6 @@ const MessageItem = ({
 }) => {
   return (
     <div
-      key={key}
       className={cx(
         "row",
         "py-2",

@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 
-const Header = ({ onLogout, username }) => {
+const Header = memo(({ onLogout, username }) => {
   useEffect(() => console.log("Header#update"));
 
   const handleClick = (e) => {
@@ -51,6 +51,6 @@ const Header = ({ onLogout, username }) => {
       )}
     </nav>
   );
-};
+});
 
 export default Header;

@@ -3,7 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import PageChat from "./PageChat";
 import PageLogin from "./PageLogin";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 /*
 class App extends Component {
@@ -92,9 +92,9 @@ const App = ({
     setCurrentRoom(label);
   };
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     setUsername(null);
-  };
+  }, []);
 
   return (
     <>

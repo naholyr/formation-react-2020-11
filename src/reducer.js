@@ -1,5 +1,10 @@
 const { initialState } = require("./store");
 
+const dateFormatter = new Intl.DateTimeFormat(undefined, {
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "AUTH/LOGIN":
@@ -27,9 +32,15 @@ export const reducer = (state = initialState, action) => {
       const hasRoom = state.rooms.some(
         (room) => room.label === action.payload.label
       );
+
       if (hasRoom)
         return {
           ...state,
+          rooms: state.rooms.map((room) =>
+            room.label === action.payload.label && room.notif > 0
+              ? { ...room, notif: 0 }
+              : room
+          ),
           currentRoom: action.payload.label,
         };
 
@@ -42,9 +53,36 @@ export const reducer = (state = initialState, action) => {
 
       return {
         ...state,
+
         currentRoom: newRoom.label,
         rooms: [...state.rooms, newRoom],
       };
+
+    case "RECEIVED_MESSAGE": {
+      const { timestamp, text, username, room: label } = action.payload;
+      const newMessage = {
+        timestamp,
+        text,
+        username,
+        isSystem: label === "(system)",
+        formattedTime: dateFormatter.format(timestamp),
+      };
+
+      return {
+        ...state,
+        rooms:
+          label !== state.currentRoom
+            ? state.rooms.map((room) =>
+                room.label === label ? { ...room, notif: room.notif + 1 } : room
+              )
+            : state.rooms,
+        messages: {
+          ...state.messages,
+          [label]: [newMessage, ...(state.messages[label] ?? [])],
+        },
+      };
+    }
+
     default:
       return state;
   }

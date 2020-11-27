@@ -1,17 +1,26 @@
 import "./MessageList.css";
 import MessageItem from "./MessageItem";
 import { useLogLifecycle } from "./use-log-lifecycle";
-import { useSelector } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 
 // Lucas
 
 const MessageList = () => {
   useLogLifecycle("MessageList");
 
+  /*
   const messages = useSelector((appState) => appState.messages);
   const showSystemMessages = useSelector(
     (appState) => appState.showSystemMessages
   );
+  */
+
+  const [messages, showSystemMessages] = useSelector((appState) => {
+    return [
+      appState.messages[appState.currentRoom] || [],
+      appState.showSystemMessages,
+    ];
+  }, shallowEqual);
 
   return (
     <div className="container MessageList">

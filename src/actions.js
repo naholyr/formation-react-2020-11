@@ -12,3 +12,13 @@ export const joinedRoom = (label, closable = true) => ({
   type: "JOINED_ROOM",
   payload: { label, closable },
 });
+
+export const receivedMessage = ({
+  timestamp = Date.now(),
+  text,
+  username,
+  room,
+}) => ({
+  type: "RECEIVED_MESSAGE",
+  payload: { timestamp, text, username, room },
+});

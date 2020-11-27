@@ -1,19 +1,23 @@
 import "./ChatForm.css";
-import { initialState } from "./store";
 import { useLogLifecycle } from "./use-log-lifecycle";
+import { useDispatch } from "react-redux";
+import { joinedRoom } from "./actions";
+import { useSelector } from "react-redux";
 
 const ChatForm = () => {
   useLogLifecycle("ChatForm");
 
-  // TODO subscribe to store
-  const { currentRoom } = initialState;
+  const currentRoom = useSelector((appState) => appState.currentRoom);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const message = e.target.elements.message.value;
+
     switch (e.target.elements.action.value) {
       case "join":
-        // TODO dispatch "joinRoom"
-        // TODO set select's value to "join" once selected new room
+        dispatch(joinedRoom("#" + message));
+        e.target.elements.action.value = "post";
         break;
       default:
         // TODO dispatch "postMessage"

@@ -14,6 +14,7 @@ import { useLogLifecycle } from "./use-log-lifecycle";
         className={cx("btn", { "btn-primary": active }, "nav-link flex-grow-1")}
       > */
 
+// memo ?
 const MessageItem = ({
   timestamp,
   formattedTime,

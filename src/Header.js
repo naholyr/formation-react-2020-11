@@ -1,14 +1,16 @@
 import { useLogLifecycle } from "./use-log-lifecycle";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logout } from "./actions";
 
 const Header = () => {
   useLogLifecycle("Header");
 
   const username = useSelector((appState) => appState.username);
-
+  const dispatch = useDispatch();
   const handleClick = (e) => {
     e.preventDefault();
-    // TODO dispatch "logout"
+    dispatch(logout());
   };
 
   return (

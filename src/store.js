@@ -42,12 +42,18 @@ export const initialState = {
     },
   ],
   showSystemMessages: true,
-  currentRoom: "#general",
+  currentRoom: null, // room name (e.g. "#general")
+  username: null,
+  // Fake rooms when not authenticated
   rooms: [
+    { label: "(system)", disabled: true },
+    { label: "@username", disabled: true },
+    { label: "#general", disabled: true },
+  ],
+  /* sample rooms:
+  [
     { label: "(system)", notif: 3 },
     { closable: true, label: "@bob" },
     { closable: true, label: "#general" },
-    { closable: true, label: "#toto", notif: 1 },
-  ],
-  username: null,
+  ]*/
 };

@@ -1,14 +1,14 @@
 // Clément
 import "./RoomList.css";
 import RoomItem from "./RoomItem";
-import { initialState } from "./store";
 import { useLogLifecycle } from "./use-log-lifecycle";
+import { useSelector } from "react-redux";
 
 const RoomList = () => {
   useLogLifecycle("RoomList");
 
-  // TODO subscribe to store
-  const { rooms, currentRoom } = initialState;
+  const rooms = useSelector((appState) => appState.rooms);
+  const currentRoom = useSelector((appState) => appState.currentRoom);
 
   return (
     <ul className="RoomList col-auto p-3 nav nav-pills flex-column">

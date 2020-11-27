@@ -1,4 +1,4 @@
-import { authLogin } from "./actions";
+import { authLogin, joinedRoom } from "./actions";
 import { useLogLifecycle } from "./use-log-lifecycle";
 import { useDispatch } from "react-redux";
 
@@ -11,6 +11,9 @@ const LoginForm = () => {
     e.preventDefault();
     // TODO dispatch action "login"
     dispatch(authLogin(e.target.elements.username.value));
+    dispatch(joinedRoom("(system)", false));
+    dispatch(joinedRoom("#@" + e.target.elements.username.value));
+    dispatch(joinedRoom("#general"));
   };
 
   return (

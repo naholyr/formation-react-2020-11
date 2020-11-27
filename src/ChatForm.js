@@ -44,19 +44,7 @@ const ChatForm = memo(() => {
         e.target.elements.action.value = "post";
         break;
       default:
-        // TODO dispatch "postMessage"
-        // dispatch(postMessage(message))
-
-        // Version optimiste:
-        // TODO dispatch "receivedMessage"
-        dispatch(
-          receivedMessage({
-            timestamp: Date.now(),
-            text: message,
-            username,
-            room: currentRoom,
-          })
-        );
+        dispatch(postMessage(message));
         break;
     }
     e.target.elements.message.value = "";

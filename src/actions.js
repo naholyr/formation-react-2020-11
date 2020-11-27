@@ -22,3 +22,26 @@ export const receivedMessage = ({
   type: "RECEIVED_MESSAGE",
   payload: { timestamp, text, username, room },
 });
+
+/*
+export const postMessage = (message) => ({
+  type: "HTTP",
+  payload: {
+    url: "/message",
+    data: (state) => ({
+      message,
+      username: state.username,
+      // etc.
+    }),
+    onSuccessAction: receivedMessage,
+  },
+});
+*/
+
+export const postMessage = (message) => ({
+  type: "WEBSOCKET",
+  payload: (state) => ({
+    name: "message",
+    args: [message, state.currentRoom],
+  }),
+});

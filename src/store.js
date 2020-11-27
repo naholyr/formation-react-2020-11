@@ -1,4 +1,8 @@
 export const initialState = {
+  ui: {
+    loading: false, // TODO display spinner if true (in App?)
+    error: null, // TODO show error if true (in App? Header?)
+  },
   messages: {},
   /*
   {

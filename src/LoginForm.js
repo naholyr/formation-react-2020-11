@@ -1,10 +1,16 @@
+import { authLogin } from "./actions";
+import { useLogLifecycle } from "./use-log-lifecycle";
+import { useDispatch } from "react-redux";
+
 const LoginForm = () => {
   useLogLifecycle("LoginForm");
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO dispatch action "login"
-    // console.log(e.target.elements.username.value);
+    dispatch(authLogin(e.target.elements.username.value));
   };
 
   return (

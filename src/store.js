@@ -49,5 +49,5 @@ export const initialState = {
     { closable: true, label: "#general" },
     { closable: true, label: "#toto", notif: 1 },
   ],
-  username: "bob",
+  username: null,
 };

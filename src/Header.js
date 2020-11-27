@@ -1,11 +1,10 @@
-import { initialState } from "./store";
 import { useLogLifecycle } from "./use-log-lifecycle";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   useLogLifecycle("Header");
 
-  // TODO subscribe to store
-  const { username } = initialState;
+  const username = useSelector((appState) => appState.username);
 
   const handleClick = (e) => {
     e.preventDefault();

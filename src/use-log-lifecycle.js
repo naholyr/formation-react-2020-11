@@ -18,6 +18,8 @@ export const useLogLifecycle = (name) => {
   }, []); // name should be an hardcoded string
 
   // Count updates
+  // 1st render: return (this.nbUpdates = { current: 0 })
+  // 2nd render: return this.nbUpdates
   const nbUpdates = useRef(0);
   useEffect(() => {
     if (nbUpdates.current > 0) {

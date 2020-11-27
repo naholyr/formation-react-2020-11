@@ -1,8 +1,9 @@
+import { memo } from "react";
 import LoginForm from "./LoginForm";
 import RoomList from "./RoomList";
 import { useLogLifecycle } from "./use-log-lifecycle";
 
-const PageLogin = () => {
+const PageLogin = memo(() => {
   useLogLifecycle("PageLogin");
 
   return (
@@ -23,6 +24,6 @@ const PageLogin = () => {
       </div>
     </div>
   );
-};
+});
 
 export default PageLogin;

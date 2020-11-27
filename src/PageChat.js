@@ -4,8 +4,9 @@ import RoomList from "./RoomList";
 import ChatForm from "./ChatForm";
 import MessageList from "./MessageList";
 import { useLogLifecycle } from "./use-log-lifecycle";
+import { memo } from "react";
 
-const PageChat = () => {
+const PageChat = memo(() => {
   useLogLifecycle("PageChat");
 
   return (
@@ -21,6 +22,6 @@ const PageChat = () => {
       </div>
     </div>
   );
-};
+});
 
 export default PageChat;

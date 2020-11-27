@@ -1,15 +1,17 @@
 import "./MessageList.css";
 import MessageItem from "./MessageItem";
-import { initialState } from "./store";
 import { useLogLifecycle } from "./use-log-lifecycle";
+import { useSelector } from "react-redux";
 
 // Lucas
 
 const MessageList = () => {
   useLogLifecycle("MessageList");
 
-  // TODO subscribe to store
-  const { messages, showSystemMessages } = initialState;
+  const messages = useSelector((appState) => appState.messages);
+  const showSystemMessages = useSelector(
+    (appState) => appState.showSystemMessages
+  );
 
   return (
     <div className="container MessageList">
